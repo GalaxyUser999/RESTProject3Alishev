@@ -5,20 +5,17 @@ import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
 import lombok.Setter;
-import ru.bolotnaya.RESTProject3Alishev.models.Sensor;
 
 @Getter
 @Setter
-public class MeasurementsDTO {
-   @Min(value = -100,  message = "Temperature can be between -100 and 100")
-   @Max(value = 100,  message = "Temperature can be between -100 and 100")
-   @NotNull(message = "Enter temperature")
+public class MeasurementAndSensorDTO {
+    @Min(value = -100,  message = "Temperature can be between -100 and 100")
+    @Max(value = 100,  message = "Temperature can be between -100 and 100")
+    @NotNull(message = "Enter temperature")
     private Double value;
 
     @NotNull(message = "Enter raining measurements")
     private Boolean raining;
 
-    private Sensor sensor;
-
-
+    private SensorDTO sensorDTO;
 }

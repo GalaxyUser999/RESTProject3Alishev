@@ -26,5 +26,5 @@ public class Sensor {
     private String name;
 
     @OneToMany(mappedBy = "sensor", cascade = CascadeType.PERSIST)
-    private List<Measurements> measurements;
+    private List<Measurement> measurements;
 }

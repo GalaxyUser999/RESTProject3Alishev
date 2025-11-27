@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @Table(name = "Measurements")
 @NoArgsConstructor
 @Data
-public class Measurements {
+public class Measurement {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -34,5 +34,6 @@ public class Measurements {
 
     @ManyToOne
     @JoinColumn(name = "sensor_id", referencedColumnName = "id")
+    @NotNull(message = "Enter the sensor")
     private Sensor sensor;
 }
