@@ -15,8 +15,8 @@ public class GlobalExceptionHandler {
 
 
     @ExceptionHandler
-    private ResponseEntity<String> handleResponse(SensorNotFoundException p) {
-        String response = p.getMessage();
+    private ResponseEntity<String> handleResponse(SensorNotFoundException sensorNotFoundException) {
+        String response = sensorNotFoundException.getMessage();
         return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
     }
 
