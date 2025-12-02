@@ -17,7 +17,7 @@ public class Sensor {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
-    private int id;
+    private long id;
 
     @NonNull
     @Column(name = "name")
@@ -25,6 +25,6 @@ public class Sensor {
     @NotEmpty(message = "Enter the sensor's name")
     private String name;
 
-    @OneToMany(mappedBy = "sensor", cascade = CascadeType.PERSIST)
+    @OneToMany(mappedBy = "sensor")
     private List<Measurement> measurements;
 }
