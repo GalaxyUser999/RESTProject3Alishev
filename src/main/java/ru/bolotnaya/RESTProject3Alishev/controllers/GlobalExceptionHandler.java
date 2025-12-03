@@ -34,13 +34,5 @@ public class GlobalExceptionHandler {
         );
         return new ResponseEntity<>(errorMessage.toString(), HttpStatus.BAD_REQUEST);
     }
-
-
-    /// /////////////////////Не работает//////////////
-//    @ExceptionHandler(NonUniqueResultException.class)
-//    public ResponseEntity<String> handleNonUniqueResultException(NonUniqueResultException ex) {
-//        String response = ex.getMessage();
-//        return new ResponseEntity<>(response, HttpStatus.CONFLICT);
-//    }
 }
 

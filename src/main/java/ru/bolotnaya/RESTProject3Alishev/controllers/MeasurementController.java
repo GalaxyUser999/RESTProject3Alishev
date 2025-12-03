@@ -9,8 +9,6 @@ import org.springframework.web.bind.annotation.*;
 import ru.bolotnaya.RESTProject3Alishev.DTO.*;
 import ru.bolotnaya.RESTProject3Alishev.services.MeasurementService;
 
-
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
