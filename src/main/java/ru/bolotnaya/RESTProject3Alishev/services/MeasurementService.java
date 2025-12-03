@@ -38,7 +38,13 @@ public class MeasurementService {
     }
 
     public String rainyDaysCount() {
-        long counter = measurementsRepository.countByRaining(true);
+        long counter = 0;
+
+        for (Measurement measurement: allMeasurements()){
+            if (measurement.getRaining())
+                counter++;
+        }
+
         return "The quantity of rainy days is " + counter;
     }
 
