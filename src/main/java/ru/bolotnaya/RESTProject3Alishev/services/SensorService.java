@@ -12,6 +12,9 @@ import ru.bolotnaya.RESTProject3Alishev.utils.SensorNotFoundException;
 
 import java.util.List;
 
+import static ru.bolotnaya.RESTProject3Alishev.utils.SensorNotCreatedException.sensorNotCreatedException;
+import static ru.bolotnaya.RESTProject3Alishev.utils.SensorNotFoundException.sensorNotFoundException;
+
 @Service
 @AllArgsConstructor
 @FieldDefaults(makeFinal = true)
@@ -20,13 +23,12 @@ public class SensorService {
     SensorMapper sensorMapper;
 
     public void checkByName(String name) {
-        if (sensorRepository.findByName(name).isPresent())
-            throw new SensorNotCreatedException("The sensor with this name already exists");
+        sensorRepository.findByName(name).orElseThrow(sensorNotCreatedException("The sensor \"{0}\" already exists", name));
     }
 
     public Sensor findByName(String name) {
         return sensorRepository.findByName(name)
-                .orElseThrow(SensorNotFoundException::new);
+                .orElseThrow(sensorNotFoundException("The sensor \"{0}\" has not been found", name));
     }
 
     public void save(SensorDTO sensorDTO) {
@@ -36,7 +38,7 @@ public class SensorService {
 
 
     public SensorDTO getSensorByName(String name) {
-        Sensor sensor = sensorRepository.findByName(name).orElseThrow(SensorNotFoundException::new);
+        Sensor sensor = sensorRepository.findByName(name).orElseThrow(sensorNotFoundException("The sensor \"{0}\" has not been found", name));
         return sensorMapper.toSensorDTO(sensor);
     }
 
