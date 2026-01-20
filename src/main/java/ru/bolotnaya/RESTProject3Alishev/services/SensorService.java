@@ -23,7 +23,9 @@ public class SensorService {
     SensorMapper sensorMapper;
 
     public void checkByName(String name) {
-        sensorRepository.findByName(name).orElseThrow(sensorNotCreatedException("The sensor \"{0}\" already exists", name));
+        if(sensorRepository.findByName(name).isPresent()){
+            throw new SensorNotCreatedException("The sensor "+name+" already exists");
+        }
     }
 
     public Sensor findByName(String name) {

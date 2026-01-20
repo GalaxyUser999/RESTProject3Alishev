@@ -11,6 +11,5 @@ public interface SensorMapper {
     SensorDTO toSensorDTO(Sensor sensor);
 
     List<SensorDTO> toSensorResponseList(List<Sensor> sensors);
-
     Sensor toSensor(SensorDTO sensorDTO);
 }
